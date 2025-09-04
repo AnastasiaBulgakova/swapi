@@ -1,0 +1,116 @@
+.planet-list-container {
+    background-color: #222;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #eee;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  }
+  
+  .title {
+    text-align: center;
+    color: #f0f0f0;
+    margin-bottom: 25px;
+  }
+  
+  .planet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .planet-item {
+    background-color: #444;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+  }
+  
+  .planet-item:hover {
+    transform: scale(1.02);
+    background-color: #555;
+  }
+  
+  .planet-item h4 {
+    margin: 0 0 10px;
+    color: #fff;
+  }
+  
+  .planet-item p {
+    margin: 4px 0;
+    color: #ddd;
+  }
+  .planet-list-wrapper {
+    padding: 20px;
+    background-color: #222;
+    color: #eee;
+    min-height: 100vh;
+  }
+  
+  .planet-title {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #444;
+    padding-bottom: 10px;
+  }
+  
+  .planet-card {
+    background-color: #444;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .planet-card h3 {
+    margin-top: 0;
+    color: #ffcc00;
+  }
+  
+  .planet-card ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .planet-card li {
+    margin: 5px 0;
+  }
+  
+  .load-more-btn {
+    background-color: #ffcc00;
+    color: #222;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: block;
+    margin: 30px auto 0;
+  }
+  
+  .load-more-btn:hover {
+    background-color: #e6b800;
+  }
+  
+  @media(max-width: 480px){
+    .page-title{
+      font-size: 24px;
+    }
+    .planet-name{
+      font-size: 20px;
+      margin: 0;
+    }
+    .card-body{
+      padding: 16px;
+    }
+   .info-item label{
+      font-size: 16px;
+    }
+    .info-item .value{
+      text-align: right;
+    }
+  }

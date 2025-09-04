@@ -2,10 +2,12 @@ import React from "react";
 import ItemList from "../itemList/ItemList";
 import PersonDetails from "../personDetails/PersonDetails";
 import ErrorIndicator from "../errorIndicator/ErrorIndicator";
-
+import { Link } from "react-router-dom";
+import './peoplePage.css';
 export default class PeoplePage extends React.Component{
     state={
-        selectedPerson: 3
+        selectedPerson: 3,
+        hasError: false
     }
     onPersonSelected = (id) => {
         this.setState({
@@ -14,23 +16,28 @@ export default class PeoplePage extends React.Component{
         })
     }
     componentDidCatch(){
-this.setState({
-    hasError: true
-})
+        this.setState({
+            hasError: true
+        })
     }
     render(){
         if(this.state.hasError){
             return <ErrorIndicator/>
         }
         return(
-    <div className="row mb2">
-        <div className="col-md-6">
-          <ItemList onItemSelected={this.onPersonSelected}/>
-        </div>
-        <div className="col-md-6">
-          <PersonDetails personId={this.state.selectedPerson}/>
-        </div>
-      </div>
+            <div className="people-page">
+                <div className="people-container">
+                <div className="list-wrapper">
+                    <ItemList onItemSelected={this.onPersonSelected}/>
+                </div>
+                <div className="details-wrapper">
+                    <PersonDetails personId={this.state.selectedPerson}/>
+                </div>
+                </div>
+                <Link to='/persons' className="buttonMore">
+                        i need MORE!
+                </Link>
+            </div>
         )
     }
 }

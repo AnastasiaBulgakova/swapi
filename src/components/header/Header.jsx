@@ -1,26 +1,41 @@
-import React from "react";
-import './header.css'
+import React, { useState } from "react";
+import "./header.css";
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen(prev => !prev);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
-    <div className="header d-flex">
-      <h3>
-        <a href="#">
-          Star DB
-        </a>
+    <header className="header">
+      <h3 className="logo">
+        <a href="/">Star DB</a>
       </h3>
-      <ul className="d-flex">
-        <li>
-          <a href="#">People</a>
-        </li>
-        <li>
-          <a href="#">Planets</a>
-        </li>
-        <li>
-          <a href="#">Starships</a>
-        </li>
-      </ul>
-    </div>
+
+      <button
+        className={`burger ${menuOpen ? "open" : ""}`}
+        onClick={toggleMenu}
+        aria-label="Toggle menu"
+      >
+        ☰
+      </button>
+
+      <nav className={`nav ${menuOpen ? "nav-open" : ""}`}>
+        <button className="close-btn" onClick={closeMenu}>×</button>
+        <ul className="nav-links">
+          <li onClick={closeMenu}>
+            <a href="/persons">People</a>
+          </li>
+          <li onClick={closeMenu}>
+            <a href="/planets">Planets</a>
+          </li>
+          <li onClick={closeMenu}>
+            <a href="/starships">Starships</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 };
 

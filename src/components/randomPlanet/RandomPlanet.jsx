@@ -64,13 +64,14 @@ onError = (err) => {
 
 const PlanetView = ({planet}) => {
     const {  name, population,
-        rotationPeriod, diameter }  = planet;
+        rotationPeriod, diameter, image }  = planet;
     return (
         <React.Fragment>
              
         <div>
           <h4>{name}</h4>
           <ul className="list-group list-group-flush">
+            {image}
             <li className="list-group-item">
               <span className="term">Population</span>
               <span>{population}</span>

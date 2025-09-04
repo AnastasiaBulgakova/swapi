@@ -5,3 +5,46 @@
   .item-list .list-group-item:hover {
     background-color: #444;
   }
+
+  .buttonMore{
+    margin-top: 32px;
+    padding: 12px 15px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .buttonMore:hover {
+    background-color: #666;
+  }
+  
+  .item-list{
+    height: 100%;
+  }
+
+ 
+
+@media (min-width: 688px) {
+    
+    .list-wrapper,
+    .details-wrapper {
+        flex: 1;
+    }
+
+    
+}
+.item-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.people-page{
+  margin: 0;
+  padding: 0;
+}
+.item-list{
+  width: 100%;
+
+}

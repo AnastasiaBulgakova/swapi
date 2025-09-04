@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 
 export default class SwapiService extends React.Component {
-  _swapiBase = "https://swapi.dev/api";
+  _swapiBase = "https://swapi.info/api";
   _akababBase = "https://akabab.github.io/starwars-api/api";
 
-  // --- универсальный фетчер
   async getResource(url) {
     const res = await fetch(url);
     if (!res.ok) {
@@ -13,7 +12,6 @@ export default class SwapiService extends React.Component {
     return await res.json();
   }
 
-  // --- персонажи с картинками
   async getAllPeople() {
     const data = await this.getResource(`${this._akababBase}/all.json`);
     return data.map(this._transformPerson);
@@ -24,14 +22,13 @@ export default class SwapiService extends React.Component {
     return this._transformPerson(data);
   }
 
-  // --- планеты и корабли оставим из SWAPI (без картинок)
   async getAllPlanets() {
     const res = await this.getResource(`${this._swapiBase}/planets/`);
     return res.results.map(this._transformPlanet);
   }
 
   async getPlanet(id) {
-    const planet = await this.getResource(`${this._swapiBase}/planets/${id}/`);
+    const planet = await this.getResource(`${this._swapiBase}/planets/${id}`);
     return this._transformPlanet(planet);
   }
 
@@ -41,24 +38,31 @@ export default class SwapiService extends React.Component {
   }
 
   async getStarship(id) {
-    const starship = await this.getResource(`${this._swapiBase}/starships/${id}/`);
+    const starship = await this.getResource(`${this._swapiBase}/starships/${id}`);
     return this._transformStarship(starship);
   }
-
+ 
+  
   _extractId(item) {
     const idRegExp = /\/([0-9]*)\/$/;
     return item.url.match(idRegExp)?.[1];
   }
 
-  _transformPlanet = (planet) => {
-    return {
-      id: this._extractId(planet),
-      name: planet.name,
-      population: planet.population,
-      rotationPeriod: planet.rotation_period,
-      diameter: planet.diameter,
-    };
+_transformPlanet = (planet) => {
+  return {
+    id: this._extractId(planet),
+    name: planet.name,
+    population: planet.population,
+    rotationPeriod: planet.rotation_period,
+    orbitalPeriod: planet.orbital_period,
+    diameter: planet.diameter,
+    climate: planet.climate,
+    gravity: planet.gravity,
+    terrain: planet.terrain,
+    surfaceWater: planet.surface_water,
   };
+};
+
 
   _transformStarship = (starship) => {
     return {
@@ -81,7 +85,7 @@ export default class SwapiService extends React.Component {
       gender: person.gender,
       birthYear: person.birthYear || "unknown",
       eyeColor: person.eyeColor || "unknown",
-      image: person.image, // тут уже готовая ссылка
+      image: person.image, 
     };
   };
 }

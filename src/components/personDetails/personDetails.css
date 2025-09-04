@@ -18,3 +18,9 @@
   .person-details .list-group-item .term{
     margin-right: .5rem;
   }
+
+  @media(max-width: 480px){
+    .page-title{
+      font-size: 24px;
+    }
+  }

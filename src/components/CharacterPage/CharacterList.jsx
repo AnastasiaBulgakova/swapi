@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 
-import './itemList.css';
 import SwapiService from '../../services/SwapiServise.jsx';
 import Spinner from '../spinner/Spinner.jsx';
 import { Link } from 'react-router-dom';
 
-export default class ItemList extends Component {
+export default class CharacterList extends Component {
     swapiService = new SwapiService();
     state={
         peopleList: null
@@ -22,9 +21,7 @@ export default class ItemList extends Component {
     };
 
     renderItems(arr){
-        // Ограничиваем массив до 5 элементов
-        const limitedArr = arr.slice(0, 5);
-        return limitedArr.map(({id, name}) => {
+        return arr.map(({id, name}) => {
             return(  
                 <li className="list-group-item" key={id} onClick={() => this.props.onItemSelected(id)}>
                     {name}
@@ -42,13 +39,12 @@ export default class ItemList extends Component {
         const items = this.renderItems(peopleList)
         
         return (
-            <div className="item-list-container">
+            < >
                 <ul className="item-list list-group">
                     {items}
                 </ul>
-                
-            </div>
+            
+            </>
         );
-        
     }
 }
